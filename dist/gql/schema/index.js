@@ -8,12 +8,31 @@ export const typeDefs = `#graphql
     description: String
     price: Float
     quantity: Int
-    category: String
     onStock: Boolean
+    category: Category
+    reviews: [Review]
  }
+ 
+ type Category {
+    id: ID!
+    name: String
+    products: [Product]
+}
+
+type Review {
+    id: ID!
+    productId: ID!
+    rating: Int
+    date: String
+    review: String
+}
 
  type Query{
   products : [Product]
   product (productId : ID!): Product
+  categories: [Category]
+  category(categoryId : ID!): Category
  }
+
+ 
 `;
